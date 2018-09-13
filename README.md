@@ -144,6 +144,7 @@ job('upstreamJob') {
             permitAll()
             autoCloseFailedPullRequests()
             displayBuildErrorsOnDownstreamBuilds()
+            commentFilePath("relative/path/to/file")
             whiteListTargetBranches(['master','test', 'test2'])
             blackListTargetBranches(['master','test', 'test2'])
             whiteListLabels(['foo', 'bar'])
@@ -165,6 +166,9 @@ job('upstreamJob') {
                     completedStatus('SUCCESS', 'There were no errors, go have a cup of coffee...')
                     completedStatus('FAILURE', 'There were errors, for info, please see...')
                     completedStatus('ERROR', 'There was an error in the infrastructure, please contact...')
+                }
+                commentFilePath {
+                    commentFilePath("relative/path/to/file")
                 }
             }
         }
